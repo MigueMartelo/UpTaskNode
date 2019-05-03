@@ -1,7 +1,9 @@
 # UpTaskNode
 
 Primer proyecto del Bootcamp NodeJS
-Administrador de proyectos-
+-Administrador de proyectos-
+
+Tecnologías utilizadas: NodeJS, Express, Mysql, Sequelize, Pug
 
 # Instalación
 ```bash
