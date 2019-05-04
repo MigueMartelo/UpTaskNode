@@ -1,3 +1,5 @@
+const Proyectos = require('../models/Proyectos');
+
 exports.proyectosHome = (req, res) => {
   res.render('index', {
     nombrePagina: 'Proyectos'
@@ -10,7 +12,7 @@ exports.formularioProyecto = (req, res) => {
   });
 }
 
-exports.nuevoProyecto = (req, res) => {
+exports.nuevoProyecto = async (req, res) => {
   // Enviar a consola lo que el usuario escriba
   //console.log(req.body);
 
@@ -31,5 +33,7 @@ exports.nuevoProyecto = (req, res) => {
     });
   } else {
     // no hay errores, insertar en la BD
+    const proyecto = await Proyectos.create({ nombre });
+    res.redirect('/');
   }
 }
