@@ -6,6 +6,7 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('./config/passport');
 
 // importando helpers con algunas funciones
 const helpers = require('./helpers');
@@ -18,8 +19,7 @@ require('./models/Proyectos');
 require('./models/Tareas');
 require('./models/Usuarios');
 
-db
-	.sync()
+db.sync()
 	.then(() => console.log('Conectado al Servidor'))
 	.catch(err => console.log(err));
 
@@ -54,6 +54,9 @@ app.use(
 		saveUninitialized: false
 	})
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // habilitando vardump en la aplicación
 app.use((req, res, next) => {
